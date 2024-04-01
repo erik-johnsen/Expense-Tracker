@@ -7,6 +7,7 @@
 	height: 100vh;
 	background-color: var(--color-background);
 	color: var(--color-font);
+	font-family: var(--font-primary);
 }
 
 .current-money-container {
