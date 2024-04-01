@@ -13,7 +13,11 @@ function App() {
           <div className='current-money_number'>2914 NOK</div>
         </div>
       </section>
-      <section className='transaction-container'></section>
+
+      <section className='transaction-container'>
+
+        
+      </section>
     </div>
       
     </>

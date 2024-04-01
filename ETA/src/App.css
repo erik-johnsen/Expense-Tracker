@@ -1,0 +1,38 @@
+
+.window-container {
+	display: flex;
+	flex-direction: column;
+	width: 100vw;
+	height: 100vh;
+	background-color: var(--color-background);
+	color: var(--color-font);
+}
+
+.current-money-container {
+	display: flex;
+	flex-basis: 30%;
+	padding: 1.5rem 2.06rem;
+}
+
+.current-money_div {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 1rem;
+	background-color: var(--color-secondary);
+	border-radius: var(--border-radius);
+	width: 15rem;
+	height: 8.6rem;
+	padding: 0.75rem;
+}
+
+.current-money_title {
+	font-size: var(--font-size-medium);
+}
+
+.current-money_number {
+	font-size: var(--font-size-large);
+}
+.transaction-container {
+	flex-basis: 70%;
+}
