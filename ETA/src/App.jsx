@@ -1,6 +1,7 @@
 import './App.css'
 import './variables.css'
 import './reset.css'
+import PlusButton from './Components/PlusButton/PlusButton'
 
 function App() {
 
@@ -18,6 +19,8 @@ function App() {
         <div className='transaction-title'>Transactions</div>
 
         <div className='transactions-item-container'>
+          {/* PLACEHOLDERS */}
+
           <div className='transaction-item'>
             <div className='transaction-item_title-date'>
               <div className='transaction-item_title'>Movie Ticket</div>
@@ -35,6 +38,8 @@ function App() {
           </div>
         </div>
       </section>
+
+      <PlusButton />
     </div>
       
     </>
