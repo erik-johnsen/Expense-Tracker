@@ -15,8 +15,25 @@ function App() {
       </section>
 
       <section className='transaction-container'>
+        <div className='transaction-title'>Transactions</div>
 
-        
+        <div className='transactions-item-container'>
+          <div className='transaction-item'>
+            <div className='transaction-item_title-date'>
+              <div className='transaction-item_title'>Movie Ticket</div>
+              <div className='transaction-item_date'>25 March 2024</div>
+            </div>
+            <div className='transaction-item_amount'>120 Kroner</div>
+          </div>
+
+          <div className='transaction-item'>
+            <div className='transaction-item_title-date'>
+              <div className='transaction-item_title'>Groceries</div>
+              <div className='transaction-item_date'>20 March 2024</div>
+            </div>
+            <div className='transaction-item_amount'>219 Kroner</div>
+          </div>
+        </div>
       </section>
     </div>
       
