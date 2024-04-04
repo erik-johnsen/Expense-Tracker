@@ -1,6 +1,8 @@
 import "./Dashboard.css";
+import PlusButton from "../PlusButton/PlusButton";
+import IncomeOrExpense from "../IncomeOrExpense/IncomeOrExpense";
 
-export default function Dashboard() {
+export default function Dashboard({showIncomeOrExpenseProp}) {
   return (
     <>
       <div className="dashboard">
@@ -34,8 +36,8 @@ export default function Dashboard() {
             </div>
           </div>
         </section>
-
-        {/* <PlusButton showIncomeOrExpenseProp={showIncomeOrExpense} /> */}
+        <IncomeOrExpense />
+        <PlusButton  showIncomeOrExpenseProp={showIncomeOrExpenseProp}/>
       </div>
     </>
   );
