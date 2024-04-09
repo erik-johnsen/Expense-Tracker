@@ -3,12 +3,11 @@ import PlusButton from "../PlusButton/PlusButton";
 import IncomeOrExpense from "../IncomeOrExpense/IncomeOrExpense";
 import { useState } from "react";
 
-export default function Dashboard() {
-  const [showIncomeOrExpense, setShowIncomeOrExpense] = useState(false)
-  	const toggleIncomeOrExpense = ()=> {
-    setShowIncomeOrExpense(!showIncomeOrExpense) 
-    console.log(showIncomeOrExpense);
-  	}
+export default function Dashboard({ toggleDashboardAddExpenseProp }) {
+  const [showIncomeOrExpense, setShowIncomeOrExpense] = useState(false);
+  const toggleIncomeOrExpense = () => {
+    setShowIncomeOrExpense(!showIncomeOrExpense);
+  };
   return (
     <>
       <div className="dashboard">
@@ -42,8 +41,11 @@ export default function Dashboard() {
             </div>
           </div>
         </section>
-        <IncomeOrExpense showIncomeOrExpenseProp={showIncomeOrExpense}/>
-        <PlusButton toggleIncomeOrExpenseProp={toggleIncomeOrExpense}/>
+        <IncomeOrExpense
+          showIncomeOrExpenseProp={showIncomeOrExpense}
+          toggleDashboardAddExpenseProp={toggleDashboardAddExpenseProp}
+        />
+        <PlusButton toggleIncomeOrExpenseProp={toggleIncomeOrExpense} />
       </div>
     </>
   );
