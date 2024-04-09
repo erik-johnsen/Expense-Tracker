@@ -37,7 +37,7 @@ export default function AddExpensePage(){
 
 				<select className="select-category">
 
-					<option selected disabled>Category</option>
+					<option defaultValue={"Category"} disabled>Category</option>
 					<option value="housing">Housing</option>
 					<option value="grocery">Grocery</option>
 					<option value="transportation">Transportation</option>

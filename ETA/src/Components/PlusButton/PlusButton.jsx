@@ -1,10 +1,10 @@
 import './PlusButton.css'
 
-export default function PlusButton({showIncomeOrExpenseProp}) {
+export default function PlusButton({toggleIncomeOrExpenseProp}) {
 
 	return (
 		<>
-		<button className="plus-button" onClick={showIncomeOrExpenseProp}>+</button>
+		<button className="plus-button" onClick={toggleIncomeOrExpenseProp}>+</button>
 		
 		</>
 	)
