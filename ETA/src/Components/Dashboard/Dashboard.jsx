@@ -10,7 +10,6 @@ export default function Dashboard({ toggleDashboardAddExpenseProp }) {
   const [showIncomeOrExpense, setShowIncomeOrExpense] = useState(false);
   const toggleIncomeOrExpense = () => {
     setShowIncomeOrExpense(!showIncomeOrExpense);
-    console.log(showIncomeOrExpense);
   };
 
   // THIS IS TO TOGGLE "ADD INCOME POPUP"

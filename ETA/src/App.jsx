@@ -9,7 +9,10 @@ function App() {
   const [dashboardAddExpenseStatus, setDashboardAddExpenseStatus] = useState(false)
   const toggleDashboardAddExpense = ()=> {
     setDashboardAddExpenseStatus(!dashboardAddExpenseStatus)
-    console.log(dashboardAddExpenseStatus);
+  }
+  const [listFromExpensePage, setListFromExpensePage] = useState("")
+  const handleExpenseItems =(data)=> {
+    setListFromExpensePage(data)
   }
   return (
     <>
@@ -19,7 +22,7 @@ function App() {
       </div>
       
       <div style={{display: dashboardAddExpenseStatus ? 'block' : 'none'}}>
-        <AddExpensePage toggleDashboardAddExpenseProp={toggleDashboardAddExpense}/>
+        <AddExpensePage toggleDashboardAddExpenseProp={toggleDashboardAddExpense} handleExpenseItemsProp={handleExpenseItems}/>
       </div>
       
     </div>

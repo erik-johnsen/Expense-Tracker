@@ -30,14 +30,13 @@ export default function AddExpensePage() {
       clonedErrors.dateError = "Date is required";
       isValid = false;
     }
-    if (!expense.category.trim()) {
+    if (expense.category === undefined) {
       clonedErrors.categoryError = "Category is required";
       isValid = false;
     }
     setError(clonedErrors);
     return isValid;
   };
-
   const handleChange = (e) => {
     setError((prev) => ({ ...prev, [`${e.target.name}Error`]: "" }));
     const expenseFormData = new FormData(expenseForm.current);
@@ -54,7 +53,18 @@ export default function AddExpensePage() {
     }
   };
 
-  console.log(allExpenseItems);
+  const checkboxDateToday =()=>{
+	const today = new Date()
+	const day = (today.getDate()) < 10 ? (`0${today.getDate()}`) : (today.getDate())
+	
+	const month = (today.getMonth()+1) < 10 ? (`0${today.getMonth() + 1}`) : (today.getMonth() + 1)
+	const year = today.getFullYear()
+	setExpense((prev)=> ({...prev, ["date"]: `${day}/${month}/${year}`}))
+
+	// TODO: FIX THE INPUTFIELD SO IT UPDATES WHEN USER CLICK THE TODAY CHECKBOX
+	
+  }
+
 
   return (
     <>
@@ -94,6 +104,7 @@ export default function AddExpensePage() {
                 name="date"
                 className="form-input_date"
                 placeholder=""
+				value={expense.date}
                 onChange={handleChange}
               />
             </span>
@@ -104,6 +115,7 @@ export default function AddExpensePage() {
                 type="checkbox"
                 name="date-today"
                 className="form-input_date-today"
+				onChange={checkboxDateToday}
               />
             </span>
             <p>{error.dateError}</p>
