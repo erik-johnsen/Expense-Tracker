@@ -1,30 +1,48 @@
-import './App.css'
-import './variables.css'
-import './reset.css'
-import AddExpensePage from './Components/AddExpensePage/AddExpensePage'
-import Dashboard from './Components/Dashboard/Dashboard'
-import { useState } from 'react'
+import './App.css';
+import './variables.css';
+import './reset.css';
+import AddExpensePage from './Components/AddExpensePage/AddExpensePage';
+import Dashboard from './Components/Dashboard/Dashboard';
+import { useState } from 'react';
 
 function App() {
-  const [dashboardAddExpenseStatus, setDashboardAddExpenseStatus] = useState(false)
-  const toggleDashboardAddExpense = ()=> {
-    setDashboardAddExpenseStatus(!dashboardAddExpenseStatus)
-  }
+  const [totalMoney, setTotalMoney] = useState(0);
+
+  // GET REZA TO FIX THIS
+  // useEffect(() => {
+  //   setTotalMoney(JSON.parse(localStorage.getItem('money')) || []);
+  // }, []);
+
+  // useEffect(() => {
+  //   localStorage.setItem('money', JSON.stringify(totalMoney));
+  // }, [totalMoney]);
+
+  const [dashboardAddExpenseStatus, setDashboardAddExpenseStatus] =
+    useState(false);
+  const toggleDashboardAddExpense = () => {
+    setDashboardAddExpenseStatus(!dashboardAddExpenseStatus);
+  };
 
   return (
     <>
-    <div className='window-container'>
-      <div style={{display: dashboardAddExpenseStatus ? 'none' : 'block'}}>
-        <Dashboard toggleDashboardAddExpenseProp={toggleDashboardAddExpense}/>
+      <div className='window-container'>
+        <div style={{ display: dashboardAddExpenseStatus ? 'none' : 'block' }}>
+          <Dashboard
+            toggleDashboardAddExpenseProp={toggleDashboardAddExpense}
+            totalMoneyProp={totalMoney}
+            setTotalMoneyProp={setTotalMoney}
+          />
+        </div>
+
+        <div style={{ display: dashboardAddExpenseStatus ? 'block' : 'none' }}>
+          <AddExpensePage
+            toggleDashboardAddExpenseProp={toggleDashboardAddExpense}
+            setTotalMoneyProp={setTotalMoney}
+          />
+        </div>
       </div>
-      
-      <div style={{display: dashboardAddExpenseStatus ? 'block' : 'none'}}>
-        <AddExpensePage toggleDashboardAddExpenseProp={toggleDashboardAddExpense}/>
-      </div>
-      
-    </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

@@ -4,28 +4,11 @@ function AddIncomeField({
   addIncomeStatusProp,
   setTotalMoneyProp,
   toggleIncomeStatusProp,
-  toggleIncomeOrExpenseProp,
 }) {
-  // const incomeInput = useRef(0);
   const [incomeInput, setIncomeInput] = useState('');
-  const [incomeError, setIncomeError] = useState({});
-
-  // const valiIncome = () => {
-  //   let isValid = true;
-  //   const clonedErrors = { ...error };
-
-  //   if (!incomeInput.trim()) {
-  //     clonedErrors.titleError = "Title is required";
-  //     isValid = false;
-  //   }
-
-  //   setIncomeError(clonedErrors);
-  //   return isValid;
-  // };
 
   const handleIncome = () => {
-    const inputValue = incomeInput.trim();
-    if (inputValue) {
+    if (incomeInput.trim()) {
       setTotalMoneyProp((prev) => prev + Number(incomeInput));
       setIncomeInput('')
     }

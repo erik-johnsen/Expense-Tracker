@@ -4,17 +4,11 @@ import IncomeOrExpense from '../IncomeOrExpense/IncomeOrExpense';
 import { useEffect, useState } from 'react';
 import AddIncomeField from '../AddIncomeField/AddIncomeField';
 
-export default function Dashboard({ toggleDashboardAddExpenseProp }) {
-  const [totalMoney, setTotalMoney] = useState(0);
-
-  // GET REZA TO FIX THIS
-  // useEffect(() => {
-  //   setTotalMoney(JSON.parse(localStorage.getItem('money')) || []);
-  // }, []);
-
-  // useEffect(() => {
-  //   localStorage.setItem('money', JSON.stringify(totalMoney));
-  // }, [totalMoney]);
+export default function Dashboard({
+  toggleDashboardAddExpenseProp,
+  totalMoneyProp,
+  setTotalMoneyProp,
+}) {
 
   // THIS IS TO TOGGLE "ADD INCOME" AND "ADD EXPENSE" POPUP
   const [showIncomeOrExpense, setShowIncomeOrExpense] = useState(false);
@@ -33,7 +27,7 @@ export default function Dashboard({ toggleDashboardAddExpenseProp }) {
         <section className='current-money-container'>
           <div className='current-money_div'>
             <div className='current-money_title'>Available money</div>
-            <div className='current-money_number'>{totalMoney} NOK</div>
+            <div className='current-money_number'>{totalMoneyProp} NOK</div>
           </div>
         </section>
 
@@ -62,7 +56,7 @@ export default function Dashboard({ toggleDashboardAddExpenseProp }) {
         </section>
         <AddIncomeField
           addIncomeStatusProp={addIncomeStatus}
-          setTotalMoneyProp={setTotalMoney}
+          setTotalMoneyProp={setTotalMoneyProp}
           toggleIncomeStatusProp={toggleIncomeStatus}
           toggleIncomeOrExpenseProp={toggleIncomeOrExpense}
         />
