@@ -1,8 +1,17 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import AddExpenseButton from "../AddExpenseButton/AddExpenseButton";
 import "./AddExpensePage.css";
 
-export default function AddExpensePage() {
+export default function AddExpensePage({toggleDashboardAddExpenseProp}) {
+  const [allExpenseItems, setAllExpenseItems] = useState([]);
+
+  useEffect(() => {
+    setAllExpenseItems(JSON.parse(localStorage.getItem("items")) || [])
+  }, [])
+  
+  
+  
+
   const expenseForm = useRef(null);
 
   const [error, setError] = useState({});
@@ -12,7 +21,7 @@ export default function AddExpensePage() {
     date: "",
     category: "",
   });
-  const [allExpenseItems, setAllExpenseItems] = useState([]);
+ 
 
   const valiForm = () => {
     let isValid = true;
@@ -49,9 +58,16 @@ export default function AddExpensePage() {
 
     if (valiForm()) {
       setAllExpenseItems((prev) => [...prev, expense]);
+      toggleDashboardAddExpenseProp()
       expenseForm.current.reset();
     }
   };
+
+  useEffect(() => {
+    localStorage.setItem("items", JSON.stringify(allExpenseItems))
+  
+  }, [allExpenseItems])
+  
 
   const checkboxDateToday =()=>{
 	const today = new Date()

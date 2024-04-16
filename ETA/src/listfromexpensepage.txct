@@ -1,0 +1,4 @@
+  const [listFromExpensePage, setListFromExpensePage] = useState("")
+  const handleExpenseItems =(data)=> {
+    setListFromExpensePage(data)
+  }

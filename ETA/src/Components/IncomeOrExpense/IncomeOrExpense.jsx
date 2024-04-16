@@ -16,7 +16,7 @@ export default function IncomeOrExpense({
       >
         <button
           className="incomeOrExpense-add-expense"
-          onClick={toggleDashboardAddExpenseProp}
+          onClick={()=> {toggleDashboardAddExpenseProp(); toggleIncomeOrExpenseProp();}}
         >
           Add Expense
         </button>

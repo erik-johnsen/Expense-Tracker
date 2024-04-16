@@ -10,10 +10,7 @@ function App() {
   const toggleDashboardAddExpense = ()=> {
     setDashboardAddExpenseStatus(!dashboardAddExpenseStatus)
   }
-  const [listFromExpensePage, setListFromExpensePage] = useState("")
-  const handleExpenseItems =(data)=> {
-    setListFromExpensePage(data)
-  }
+
   return (
     <>
     <div className='window-container'>
@@ -22,7 +19,7 @@ function App() {
       </div>
       
       <div style={{display: dashboardAddExpenseStatus ? 'block' : 'none'}}>
-        <AddExpensePage toggleDashboardAddExpenseProp={toggleDashboardAddExpense} handleExpenseItemsProp={handleExpenseItems}/>
+        <AddExpensePage toggleDashboardAddExpenseProp={toggleDashboardAddExpense}/>
       </div>
       
     </div>
