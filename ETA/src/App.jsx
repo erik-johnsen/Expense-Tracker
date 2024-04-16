@@ -6,6 +6,7 @@ import Dashboard from './Components/Dashboard/Dashboard';
 import { useState } from 'react';
 
 function App() {
+  const [allExpenseItems, setAllExpenseItems] = useState([]);
   const [totalMoney, setTotalMoney] = useState(0);
 
   // GET REZA TO FIX THIS
@@ -31,6 +32,7 @@ function App() {
             toggleDashboardAddExpenseProp={toggleDashboardAddExpense}
             totalMoneyProp={totalMoney}
             setTotalMoneyProp={setTotalMoney}
+            allExpenseItemsProp={allExpenseItems}
           />
         </div>
 
@@ -38,6 +40,8 @@ function App() {
           <AddExpensePage
             toggleDashboardAddExpenseProp={toggleDashboardAddExpense}
             setTotalMoneyProp={setTotalMoney}
+            allExpenseItemsProp={allExpenseItems}
+            setAllExpenseItemsProp={setAllExpenseItems}
           />
         </div>
       </div>

@@ -5,11 +5,13 @@ import './AddExpensePage.css';
 export default function AddExpensePage({
   toggleDashboardAddExpenseProp,
   setTotalMoneyProp,
+  allExpenseItemsProp,
+  setAllExpenseItemsProp
 }) {
-  const [allExpenseItems, setAllExpenseItems] = useState([]);
+  
 
   useEffect(() => {
-    setAllExpenseItems(JSON.parse(localStorage.getItem('items')) || []);
+    setAllExpenseItemsProp(JSON.parse(localStorage.getItem('items')) || []);
   }, []);
 
   const expenseForm = useRef(null);
@@ -56,7 +58,7 @@ export default function AddExpensePage({
     e.preventDefault();
 
     if (valiForm()) {
-      setAllExpenseItems((prev) => [...prev, expense]);
+      setAllExpenseItemsProp((prev) => [...prev, expense]);
       setTotalMoneyProp((prev) => prev - expense.amount)
       toggleDashboardAddExpenseProp();
       expenseForm.current.reset();
@@ -64,8 +66,8 @@ export default function AddExpensePage({
   };
 
   useEffect(() => {
-    localStorage.setItem('items', JSON.stringify(allExpenseItems));
-  }, [allExpenseItems]);
+    localStorage.setItem('items', JSON.stringify(allExpenseItemsProp));
+  }, [allExpenseItemsProp]);
 
   const checkboxDateToday = () => {
     const today = new Date();

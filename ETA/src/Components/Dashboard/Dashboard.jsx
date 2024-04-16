@@ -8,8 +8,8 @@ export default function Dashboard({
   toggleDashboardAddExpenseProp,
   totalMoneyProp,
   setTotalMoneyProp,
+  allExpenseItemsProp,
 }) {
-
   // THIS IS TO TOGGLE "ADD INCOME" AND "ADD EXPENSE" POPUP
   const [showIncomeOrExpense, setShowIncomeOrExpense] = useState(false);
   const toggleIncomeOrExpense = () => {
@@ -37,21 +37,18 @@ export default function Dashboard({
           <div className='transactions-item-container'>
             {/* PLACEHOLDERS */}
 
-            <div className='transaction-item'>
-              <div className='transaction-item_title-date'>
-                <div className='transaction-item_title'>Movie Ticket</div>
-                <div className='transaction-item_date'>25 March 2024</div>
-              </div>
-              <div className='transaction-item_amount'>120 Kroner</div>
-            </div>
-
-            <div className='transaction-item'>
-              <div className='transaction-item_title-date'>
-                <div className='transaction-item_title'>Groceries</div>
-                <div className='transaction-item_date'>20 March 2024</div>
-              </div>
-              <div className='transaction-item_amount'>219 Kroner</div>
-            </div>
+            {allExpenseItemsProp.length > 0 &&
+              allExpenseItemsProp.map((item) => {
+                return (
+                  <div key={Date.now()} className='transaction-item' >
+                    <div className='transaction-item_title-date'>
+                      <div className='transaction-item_title'>{item.title}</div>
+                      <div className='transaction-item_date'>{item.date}</div>
+                    </div>
+                    <div className='transaction-item_amount'>{item.amount} Kroner</div>
+                  </div>
+                );
+              })}
           </div>
         </section>
         <AddIncomeField
