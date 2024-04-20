@@ -6,15 +6,14 @@ export default function AddExpensePage({
   toggleDashboardAddExpenseProp,
   setTotalMoneyProp,
   allExpenseItemsProp,
-  setAllExpenseItemsProp
+  setAllExpenseItemsProp,
 }) {
-  
-
   useEffect(() => {
     setAllExpenseItemsProp(JSON.parse(localStorage.getItem('items')) || []);
   }, []);
 
   const expenseForm = useRef(null);
+  const [statusCheckbox, setStatusCheckbox] = useState(false);
 
   const [error, setError] = useState({});
   const [expense, setExpense] = useState({
@@ -36,10 +35,10 @@ export default function AddExpensePage({
       clonedErrors.amountError = 'Amount is required';
       isValid = false;
     }
-    if (!expense.date.trim()) {
-      clonedErrors.dateError = 'Date is required';
-      isValid = false;
-    }
+    // if (!expense.date.trim() || statusCheckbox) {
+    //   clonedErrors.dateError = 'Date is required';
+    //   isValid = false;
+    // }
     if (expense.category === undefined) {
       clonedErrors.categoryError = 'Category is required';
       isValid = false;
@@ -58,8 +57,12 @@ export default function AddExpensePage({
     e.preventDefault();
 
     if (valiForm()) {
+      if (expense.dateToday === 'on') {
+        console.log("test");
+        handleDate()
+      }
       setAllExpenseItemsProp((prev) => [...prev, expense]);
-      setTotalMoneyProp((prev) => prev - expense.amount)
+      setTotalMoneyProp((prev) => prev - expense.amount);
       toggleDashboardAddExpenseProp();
       expenseForm.current.reset();
     }
@@ -70,18 +73,21 @@ export default function AddExpensePage({
   }, [allExpenseItemsProp]);
 
   const checkboxDateToday = () => {
-    const today = new Date();
-    const day = today.getDate() < 10 ? `0${today.getDate()}` : today.getDate();
-
-    const month =
-      today.getMonth() + 1 < 10
-        ? `0${today.getMonth() + 1}`
-        : today.getMonth() + 1;
-    const year = today.getFullYear();
-    setExpense((prev) => ({ ...prev, ['date']: `${day}/${month}/${year}` }));
-
-    // TODO: FIX THE INPUTFIELD SO IT UPDATES WHEN USER CLICK THE TODAY CHECKBOX
+    setStatusCheckbox(!statusCheckbox);
   };
+
+  const handleDate = ()=> {
+    const today = new Date();
+      const day =
+        today.getDate() < 10 ? `0${today.getDate()}` : today.getDate();
+
+      const month =
+        today.getMonth() + 1 < 10
+          ? `0${today.getMonth() + 1}`
+          : today.getMonth() + 1;
+      const year = today.getFullYear();
+      setExpense((prev) => ({ ...prev, date: `${day}-${month}-${year}` }));
+  }
 
   return (
     <>
@@ -121,7 +127,6 @@ export default function AddExpensePage({
                 name='date'
                 className='form-input_date'
                 placeholder=''
-                value={expense.date}
                 onChange={handleChange}
               />
             </span>
@@ -130,7 +135,7 @@ export default function AddExpensePage({
               <label htmlFor='date-today'>Today?</label>
               <input
                 type='checkbox'
-                name='date-today'
+                name='dateToday'
                 className='form-input_date-today'
                 onChange={checkboxDateToday}
               />

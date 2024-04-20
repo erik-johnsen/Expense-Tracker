@@ -3,21 +3,16 @@ import './variables.css';
 import './reset.css';
 import AddExpensePage from './Components/AddExpensePage/AddExpensePage';
 import Dashboard from './Components/Dashboard/Dashboard';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function App() {
-  const [allExpenseItems, setAllExpenseItems] = useState([]);
-  const [totalMoney, setTotalMoney] = useState(0);
+  const [allExpenseItems, setAllExpenseItems] = useState(JSON.parse(localStorage.getItem('items')) || []);
+  const [totalMoney, setTotalMoney] = useState(JSON.parse(localStorage.getItem('money')) || [])
 
-  // GET REZA TO FIX THIS
-  // useEffect(() => {
-  //   setTotalMoney(JSON.parse(localStorage.getItem('money')) || []);
-  // }, []);
-
-  // useEffect(() => {
-  //   localStorage.setItem('money', JSON.stringify(totalMoney));
-  // }, [totalMoney]);
-
+  useEffect(() => {
+    localStorage.setItem('money', JSON.stringify(totalMoney));
+  }, [totalMoney]);
+  
   const [dashboardAddExpenseStatus, setDashboardAddExpenseStatus] =
     useState(false);
   const toggleDashboardAddExpense = () => {

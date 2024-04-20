@@ -1,7 +1,7 @@
 import './Dashboard.css';
 import PlusButton from '../PlusButton/PlusButton';
 import IncomeOrExpense from '../IncomeOrExpense/IncomeOrExpense';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import AddIncomeField from '../AddIncomeField/AddIncomeField';
 
 export default function Dashboard({
@@ -35,8 +35,7 @@ export default function Dashboard({
           <div className='transaction-title'>Transactions</div>
 
           <div className='transactions-item-container'>
-            {/* PLACEHOLDERS */}
-
+              {/* FIX THIS  */}
             {allExpenseItemsProp.length > 0 &&
               allExpenseItemsProp.map((item) => {
                 return (

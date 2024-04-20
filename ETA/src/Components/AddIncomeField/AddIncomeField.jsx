@@ -9,7 +9,7 @@ function AddIncomeField({
 
   const handleIncome = () => {
     if (incomeInput.trim()) {
-      setTotalMoneyProp((prev) => prev + Number(incomeInput));
+      setTotalMoneyProp((prev) => Number(prev) + Number(incomeInput));
       setIncomeInput('')
     }
   };
