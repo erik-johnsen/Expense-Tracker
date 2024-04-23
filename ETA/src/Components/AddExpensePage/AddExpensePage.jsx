@@ -17,6 +17,7 @@ export default function AddExpensePage({
 
   const [error, setError] = useState({});
   const [expense, setExpense] = useState({
+    id: Date.now(),
     title: '',
     amount: '',
     date: '',

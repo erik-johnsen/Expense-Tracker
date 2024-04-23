@@ -9,6 +9,7 @@ export default function Dashboard({
   totalMoneyProp,
   setTotalMoneyProp,
   allExpenseItemsProp,
+  setAllExpenseItemsProp,
 }) {
   // THIS IS TO TOGGLE "ADD INCOME" AND "ADD EXPENSE" POPUP
   const [showIncomeOrExpense, setShowIncomeOrExpense] = useState(false);
@@ -21,6 +22,18 @@ export default function Dashboard({
   const toggleIncomeStatus = () => {
     setAddIncomeStatus(!addIncomeStatus);
   };
+
+  const handleDeleteButton = (index) =>{
+    allExpenseItemsProp.forEach((item)=> {
+      if(allExpenseItemsProp.indexOf(item) === index) {
+        const updatedArray = [...allExpenseItemsProp]
+        updatedArray.splice(index, 1)
+        setAllExpenseItemsProp(updatedArray)
+        console.log(allExpenseItemsProp);
+      }
+    })
+
+  }
   return (
     <>
       <div className='dashboard'>
@@ -34,17 +47,24 @@ export default function Dashboard({
         <section className='transaction-container'>
           <div className='transaction-title'>Transactions</div>
 
+          {/* This is where i render the expense items  */}
           <div className='transactions-item-container'>
-              {/* FIX THIS  */}
             {allExpenseItemsProp.length > 0 &&
-              allExpenseItemsProp.map((item) => {
+              allExpenseItemsProp.map((item, index) => {
                 return (
-                  <div key={Date.now()} className='transaction-item' >
-                    <div className='transaction-item_title-date'>
-                      <div className='transaction-item_title'>{item.title}</div>
-                      <div className='transaction-item_date'>{item.date}</div>
+                  <div key={item.title} className='transaction-item_wrapper'>
+                    <div  className='transaction-item'>
+                      <div className='transaction-item_title-date'>
+                        <div className='transaction-item_title'>
+                          {item.title}
+                        </div>
+                        <div className='transaction-item_date'>{item.date}</div>
+                      </div>
+                      <div className='transaction-item_amount'>
+                        {item.amount} Kroner
+                      </div>
                     </div>
-                    <div className='transaction-item_amount'>{item.amount} Kroner</div>
+                    <button className='transaction-item_delete-button' onClick={(e)=>handleDeleteButton(index)}>Delete</button>
                   </div>
                 );
               })}

@@ -47,6 +47,12 @@
 	gap: 0.94rem;
 }
 
+.transaction-item_wrapper {
+	display: flex;
+	flex-direction: row;
+	gap: 1rem;
+}
+
 .transaction-item {
 	display: flex;
 	justify-content: space-between;
@@ -71,4 +77,10 @@
 
 .transaction-item_number {
 	font-size: var(--font-size-medium);
+}
+
+.transaction-item_delete-button {
+	background-color: var(--color-secondary);
+	border-radius: var(--border-radius);
+	padding: 1rem;
 }

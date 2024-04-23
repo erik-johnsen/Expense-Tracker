@@ -28,6 +28,7 @@ function App() {
             totalMoneyProp={totalMoney}
             setTotalMoneyProp={setTotalMoney}
             allExpenseItemsProp={allExpenseItems}
+            setAllExpenseItemsProp={setAllExpenseItems}
           />
         </div>
 
