@@ -44,3 +44,13 @@
 	font-size: var(--font-size-medium);
 	font-weight: var(--font-weight-medium);
 }
+
+@media screen and  (min-width: 793px){
+	.add_expense_page {	
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		width: 40%;
+	}
+}
