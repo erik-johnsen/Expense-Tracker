@@ -1,11 +1,11 @@
-import './AddExpenseButton.css'
+import styles from './AddExpenseButton.module.css'
 
 export default function AddExpenseButton({addingExpenseProp}) {
 
 
 	return(
 		<>
-		<button className="form-add_button" onClick={addingExpenseProp}>Add</button>
+		<button className={styles.form_add_button} onClick={addingExpenseProp}>Add</button>
 		</>
 	)
 }

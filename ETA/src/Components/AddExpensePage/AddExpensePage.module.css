@@ -1,4 +1,4 @@
-.add-expense-page {
+.add_expense_page {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -9,7 +9,7 @@
 	
 }
 
-.add-expense-form {
+.add_expense_form {
 	position: relative;
 	display: flex;
 	flex-direction: column;
@@ -18,28 +18,28 @@
 }
 
 
-.form-input {
+.form_input {
 	display: flex;
 	flex-direction: column;
 
 }
 
-.form-input input, .select-category{
+.form_input input, .select_category{
 	height: 1.75rem;
 }
 
-.form-input_date-container {
+.form_input_date_container {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
 	gap: 1rem;
 }
 
-.form-input_date {
+.form_input_date {
 	width: 15rem;
 }
 
-.select-category {
+.select_category {
 	font: var(--font-primary);
 	font-size: var(--font-size-medium);
 	font-weight: var(--font-weight-medium);

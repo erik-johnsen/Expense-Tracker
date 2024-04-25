@@ -1,5 +1,5 @@
 
-.window-container {
+.window_container {
 	position: relative;
 	display: flex;
 	flex-direction: column;

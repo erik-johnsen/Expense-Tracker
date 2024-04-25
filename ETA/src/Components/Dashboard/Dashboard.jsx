@@ -1,7 +1,7 @@
-import './Dashboard.css';
+import styles from './Dashboard.module.css';
 import PlusButton from '../PlusButton/PlusButton';
 import IncomeOrExpense from '../IncomeOrExpense/IncomeOrExpense';
-import { useEffect, useMemo, useState } from 'react';
+import { useState } from 'react';
 import AddIncomeField from '../AddIncomeField/AddIncomeField';
 
 export default function Dashboard({
@@ -23,48 +23,57 @@ export default function Dashboard({
     setAddIncomeStatus(!addIncomeStatus);
   };
 
-  const handleDeleteButton = (index) =>{
-    allExpenseItemsProp.forEach((item)=> {
-      if(allExpenseItemsProp.indexOf(item) === index) {
-        const updatedArray = [...allExpenseItemsProp]
-        updatedArray.splice(index, 1)
-        setAllExpenseItemsProp(updatedArray)
+  const handleDeleteButton = (index) => {
+    allExpenseItemsProp.forEach((item) => {
+      if (allExpenseItemsProp.indexOf(item) === index) {
+        const updatedArray = [...allExpenseItemsProp];
+        updatedArray.splice(index, 1);
+        setAllExpenseItemsProp(updatedArray);
         console.log(allExpenseItemsProp);
       }
-    })
-
-  }
+    });
+  };
   return (
     <>
-      <div className='dashboard'>
-        <section className='current-money-container'>
-          <div className='current-money_div'>
-            <div className='current-money_title'>Available money</div>
-            <div className='current-money_number'>{totalMoneyProp} NOK</div>
+      <div className={styles.dashboard}>
+        <section className={styles.current_money_container}>
+          <div className={styles.current_money_div}>
+            <div className={styles.current_money_title}>Available money</div>
+            <div className={styles.current_money_number}>
+              {totalMoneyProp} NOK
+            </div>
           </div>
         </section>
 
-        <section className='transaction-container'>
-          <div className='transaction-title'>Transactions</div>
+        <section className={styles.transaction_container}>
+          <div className={styles.transaction_title}>Transactions</div>
 
           {/* This is where i render the expense items  */}
-          <div className='transactions-item-container'>
+          <div className={styles.transactions_item_container}>
             {allExpenseItemsProp.length > 0 &&
               allExpenseItemsProp.map((item, index) => {
                 return (
-                  <div key={item.title} className='transaction-item_wrapper'>
-                    <div  className='transaction-item'>
-                      <div className='transaction-item_title-date'>
-                        <div className='transaction-item_title'>
+                  <div
+                    key={item.title}
+                    className={styles.transaction_item_wrapper}
+                  >
+                    <div className={styles.transaction_item}>
+                      <div>
+                        <div className={styles.transaction_item_title}>
                           {item.title}
                         </div>
-                        <div className='transaction-item_date'>{item.date}</div>
+                        <div className={styles.transaction_item_date}>
+                          {item.date}
+                        </div>
                       </div>
-                      <div className='transaction-item_amount'>
-                        {item.amount} Kroner
-                      </div>
+                      <div>{item.amount} Kroner</div>
                     </div>
-                    <button className='transaction-item_delete-button' onClick={(e)=>handleDeleteButton(index)}>Delete</button>
+                    <button
+                      className={styles.transaction_item_delete_button}
+                      onClick={(e) => handleDeleteButton(index)}
+                    >
+                      Delete
+                    </button>
                   </div>
                 );
               })}

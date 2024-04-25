@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import AddExpenseButton from '../AddExpenseButton/AddExpenseButton';
-import './AddExpensePage.css';
+import styles from './AddExpensePage.module.css';
 
 export default function AddExpensePage({
   toggleDashboardAddExpenseProp,
@@ -59,8 +59,8 @@ export default function AddExpensePage({
 
     if (valiForm()) {
       if (expense.dateToday === 'on') {
-        console.log("test");
-        handleDate()
+        console.log('test');
+        handleDate();
       }
       setAllExpenseItemsProp((prev) => [...prev, expense]);
       setTotalMoneyProp((prev) => prev - expense.amount);
@@ -77,30 +77,29 @@ export default function AddExpensePage({
     setStatusCheckbox(!statusCheckbox);
   };
 
-  const handleDate = ()=> {
+  const handleDate = () => {
     const today = new Date();
-      const day =
-        today.getDate() < 10 ? `0${today.getDate()}` : today.getDate();
+    const day = today.getDate() < 10 ? `0${today.getDate()}` : today.getDate();
 
-      const month =
-        today.getMonth() + 1 < 10
-          ? `0${today.getMonth() + 1}`
-          : today.getMonth() + 1;
-      const year = today.getFullYear();
-      setExpense((prev) => ({ ...prev, date: `${day}-${month}-${year}` }));
-  }
+    const month =
+      today.getMonth() + 1 < 10
+        ? `0${today.getMonth() + 1}`
+        : today.getMonth() + 1;
+    const year = today.getFullYear();
+    setExpense((prev) => ({ ...prev, date: `${day}-${month}-${year}` }));
+  };
 
   return (
     <>
-      <section className='add-expense-page'>
+      <section className={styles.add_expense_page}>
         <h1>Add Expenses</h1>
 
         <form
-          className='add-expense-form'
+          className={styles.add_expense_form}
           onSubmit={handleSubmit}
           ref={expenseForm}
         >
-          <div className='form-input'>
+          <div className={styles.form_input}>
             <label htmlFor='title'>Title</label>
             <input
               type='text'
@@ -110,7 +109,7 @@ export default function AddExpensePage({
             />
             <p>{error.titleError}</p>
           </div>
-          <div className='form-input'>
+          <div className={styles.form_input}>
             <label htmlFor='amount'>Amount</label>
             <input
               type='number'
@@ -120,19 +119,19 @@ export default function AddExpensePage({
             />
             <p>{error.amountError}</p>
           </div>
-          <span className='form-input_date-container'>
-            <span className='form-input'>
+          <span className={styles.form_input_date_container}>
+            <span className={styles.form_input}>
               <label htmlFor='date'>Date</label>
               <input
                 type='date'
                 name='date'
-                className='form-input_date'
+                className={styles.form_input_date}
                 placeholder=''
                 onChange={handleChange}
               />
             </span>
 
-            <span className='form-input'>
+            <span className={styles.form_input}>
               <label htmlFor='date-today'>Today?</label>
               <input
                 type='checkbox'
@@ -145,7 +144,7 @@ export default function AddExpensePage({
           </span>
           <div>
             <select
-              className='select-category'
+              className={styles.select_category}
               name='category'
               onChange={handleChange}
               value={'category'}

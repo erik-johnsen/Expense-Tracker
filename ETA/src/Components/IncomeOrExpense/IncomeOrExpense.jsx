@@ -1,5 +1,4 @@
-import { useState } from "react";
-import "./IncomeOrExpense.css";
+import styles from './IncomeOrExpense.module.css'
 
 export default function IncomeOrExpense({
   showIncomeOrExpenseProp,
@@ -11,17 +10,17 @@ export default function IncomeOrExpense({
   return (
     <>
       <div
-        className="incomeOrExpense-container"
+        className={styles.incomeOrExpense_container}
         style={{ visibility: showIncomeOrExpenseProp ? "visible" : "hidden" }}
       >
         <button
-          className="incomeOrExpense-add-expense"
+          className={styles.incomeOrExpense_add_expense}
           onClick={()=> {toggleDashboardAddExpenseProp(); toggleIncomeOrExpenseProp();}}
         >
           Add Expense
         </button>
         <button
-          className="incomeOrExpense-add-income"
+          className={styles.incomeOrExpense_add_income}
           onClick={()=> {toggleIncomeStatusProp(); toggleIncomeOrExpenseProp();}}
         >
           Add Income

@@ -1,5 +1,5 @@
 
-.plus-button {
+.plus_button {
 	position: absolute;
 	right: 2rem;
 	bottom: 2rem;
@@ -10,7 +10,7 @@
 	font-size: var(--font-size-large);
 }
 
-.plus-button:hover {
+.plus_button:hover {
 	background-color: var(--color-hover);
 	transition: all 200ms;
 }

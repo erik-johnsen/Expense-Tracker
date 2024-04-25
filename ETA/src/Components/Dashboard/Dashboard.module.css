@@ -2,13 +2,13 @@
 	display: block;
 }
 
-.current-money-container {
+.current_money_container {
 	display: flex;
 	flex-basis: 30%;
 	padding: 1.5rem 2.06rem;
 }
 
-.current-money_div {
+.current_money_div {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -20,16 +20,16 @@
 	padding: 0.75rem;
 }
 
-.current-money_title {
+.current_money_title {
 	font-size: var(--font-size-medium);
 }
 
-.current-money_number {
+.current_money_number {
 	font-size: var(--font-size-large);
 }
 
 
-.transaction-container {
+.transaction_container {
 	display: flex;
 	flex-direction: column;
 	flex-basis: 70%;
@@ -37,23 +37,23 @@
 	gap: 1.06rem;
 }
 
-.transaction-title {
+.transaction_title {
 	font-size: var(--font-size-title);
 }
 
-.transactions-item-container {
+.transactions_item_container {
 	display: flex;
 	flex-direction: column;
 	gap: 0.94rem;
 }
 
-.transaction-item_wrapper {
+.transaction_item_wrapper {
 	display: flex;
 	flex-direction: row;
 	gap: 1rem;
 }
 
-.transaction-item {
+.transaction_item {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -65,21 +65,21 @@
 
 }
 
-.transaction-item_title {
+.transaction_item_title {
 	font-size: var(--font-size-medium);
 	font-weight: var(--font-weight-bold);
 }
 
-.transaction-item_date {
+.transaction_item_date {
 	font-size: var(--font-size-small);
 	opacity: var(--font-opacity-half);
 }
 
-.transaction-item_number {
+.transaction_item_number {
 	font-size: var(--font-size-medium);
 }
 
-.transaction-item_delete-button {
+.transaction_item_delete_button {
 	background-color: var(--color-secondary);
 	border-radius: var(--border-radius);
 	padding: 1rem;

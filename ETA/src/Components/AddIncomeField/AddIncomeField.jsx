@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react';
+import styles from './AddIncomeField.module.css'
 
 function AddIncomeField({
   addIncomeStatusProp,
@@ -15,7 +16,7 @@ function AddIncomeField({
   };
   return (
     <div
-      className='addIncome-container'
+      className={styles.addIncome_container}
       style={{ visibility: addIncomeStatusProp ? 'visible' : 'hidden' }}
     >
       <p>How much would you like to add?</p>
