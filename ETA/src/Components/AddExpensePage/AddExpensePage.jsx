@@ -13,11 +13,11 @@ export default function AddExpensePage({
   }, []);
 
   const expenseForm = useRef(null);
-  const [statusCheckbox, setStatusCheckbox] = useState(false);
+  const dateInputRef = useRef(null);
 
   const [error, setError] = useState({});
   const [expense, setExpense] = useState({
-    id: Date.now(),
+    id: '',
     title: '',
     amount: '',
     date: '',
@@ -36,10 +36,6 @@ export default function AddExpensePage({
       clonedErrors.amountError = 'Amount is required';
       isValid = false;
     }
-    // if (!expense.date.trim() || statusCheckbox) {
-    //   clonedErrors.dateError = 'Date is required';
-    //   isValid = false;
-    // }
     if (expense.category === undefined) {
       clonedErrors.categoryError = 'Category is required';
       isValid = false;
@@ -58,10 +54,7 @@ export default function AddExpensePage({
     e.preventDefault();
 
     if (valiForm()) {
-      if (expense.dateToday === 'on') {
-        console.log('test');
-        handleDate();
-      }
+      expense.id = crypto.randomUUID()
       setAllExpenseItemsProp((prev) => [...prev, expense]);
       setTotalMoneyProp((prev) => prev - expense.amount);
       toggleDashboardAddExpenseProp();
@@ -73,21 +66,18 @@ export default function AddExpensePage({
     localStorage.setItem('items', JSON.stringify(allExpenseItemsProp));
   }, [allExpenseItemsProp]);
 
-  const checkboxDateToday = () => {
-    setStatusCheckbox(!statusCheckbox);
+  const checkboxDateToday = (event) => {
+    const currentDate = new Date();
+    if (event.target.checked) {
+      const formattedDate = currentDate.toISOString().slice(0, 10);
+      dateInputRef.current.value = formattedDate;
+      setExpense((prevExpense) => ({ ...prevExpense, date: formattedDate }));
+    } else {
+      dateInputRef.current.value = "";
+      setExpense((prevExpense) => ({ ...prevExpense, date: "" }));
+    }
   };
 
-  const handleDate = () => {
-    const today = new Date();
-    const day = today.getDate() < 10 ? `0${today.getDate()}` : today.getDate();
-
-    const month =
-      today.getMonth() + 1 < 10
-        ? `0${today.getMonth() + 1}`
-        : today.getMonth() + 1;
-    const year = today.getFullYear();
-    setExpense((prev) => ({ ...prev, date: `${day}-${month}-${year}` }));
-  };
 
   return (
     <>
@@ -128,6 +118,7 @@ export default function AddExpensePage({
                 className={styles.form_input_date}
                 placeholder=''
                 onChange={handleChange}
+                ref={dateInputRef}
               />
             </span>
 

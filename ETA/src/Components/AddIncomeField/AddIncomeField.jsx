@@ -5,6 +5,7 @@ function AddIncomeField({
   addIncomeStatusProp,
   setTotalMoneyProp,
   toggleIncomeStatusProp,
+  handleIsAddedSuccessfullyProp
 }) {
   const [incomeInput, setIncomeInput] = useState('');
 
@@ -12,6 +13,7 @@ function AddIncomeField({
     if (incomeInput.trim()) {
       setTotalMoneyProp((prev) => Number(prev) + Number(incomeInput));
       setIncomeInput('')
+      handleIsAddedSuccessfullyProp()
     }
   };
   return (

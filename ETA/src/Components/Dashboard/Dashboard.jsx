@@ -11,10 +11,20 @@ export default function Dashboard({
   allExpenseItemsProp,
   setAllExpenseItemsProp,
 }) {
-  // THIS IS TO TOGGLE "ADD INCOME" AND "ADD EXPENSE" POPUP
+  // THIS IS THE FUNCIONALITY OF THE PLUS BUTTON ON THE DASHBOARD
   const [showIncomeOrExpense, setShowIncomeOrExpense] = useState(false);
   const toggleIncomeOrExpense = () => {
     setShowIncomeOrExpense(!showIncomeOrExpense);
+    addIncomeStatus ? setAddIncomeStatus(!addIncomeStatus) : '';
+  };
+
+  const [isAddedSuccessfully, setIsAddedSuccessfully] = useState(false);
+  const handleIsAddedSuccessfully = () => {
+    setIsAddedSuccessfully(true);
+
+    setTimeout(() => {
+      setIsAddedSuccessfully(false)
+    }, 1100);
   };
 
   // THIS IS TO TOGGLE "ADD INCOME POPUP"
@@ -37,7 +47,7 @@ export default function Dashboard({
     <>
       <div className={styles.dashboard}>
         <section className={styles.current_money_container}>
-          <div className={styles.current_money_div}>
+          <div className={`${styles.current_money_div} ${isAddedSuccessfully ? styles.added_money_successfully : ""}`}>
             <div className={styles.current_money_title}>Available money</div>
             <div className={styles.current_money_number}>
               {totalMoneyProp} NOK
@@ -54,7 +64,7 @@ export default function Dashboard({
               allExpenseItemsProp.map((item, index) => {
                 return (
                   <div
-                    key={item.title}
+                    key={item.id}
                     className={styles.transaction_item_wrapper}
                   >
                     <div className={styles.transaction_item}>
@@ -80,6 +90,7 @@ export default function Dashboard({
           </div>
         </section>
         <AddIncomeField
+          handleIsAddedSuccessfullyProp={handleIsAddedSuccessfully}
           addIncomeStatusProp={addIncomeStatus}
           setTotalMoneyProp={setTotalMoneyProp}
           toggleIncomeStatusProp={toggleIncomeStatus}

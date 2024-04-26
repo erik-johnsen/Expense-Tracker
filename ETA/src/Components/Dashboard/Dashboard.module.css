@@ -86,6 +86,22 @@
 	padding: 1rem;
 }
 
+.added_money_successfully {
+	background-color: green;
+	animation: fadeIn 500ms, fadeOut 700ms 1s;
+}
+
+@keyframes fadeIn {
+	0% { opacity: 0; }
+	100% { opacity: 1; }
+}
+
+@keyframes fadeOut {
+	100% { opacity: 1; }
+	0% { opacity: 0; }
+}
+
+
 /* Responsive */
 
 @media screen and (min-width: 460px) {
